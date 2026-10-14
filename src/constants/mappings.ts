@@ -1,3 +1,6 @@
+export const LETTERS = ['A', 'L', 'F', 'M', 'Y'] as const;
+export type Letter = (typeof LETTERS)[number];
+
 export const letterMappings = {
   'A': 'A L F',
   'L': 'L A M',
@@ -14,6 +17,15 @@ export const letterColors = {
   'Y': 'bg-sky-400'
 } as const;
 
+// Mêmes teintes que letterColors (Tailwind 400), pour canvas et SVG.
+export const letterHex: Record<Letter, string> = {
+  A: '#34d399',
+  L: '#fb7185',
+  F: '#fbbf24',
+  M: '#a78bfa',
+  Y: '#38bdf8',
+};
+
 export const arabicMappings = {
   'A': 'ا',
   'L': 'ل',
@@ -21,3 +33,11 @@ export const arabicMappings = {
   'M': 'م',
   'Y': 'ي'
 } as const;
+
+export const letterNames: Record<Letter, { name: string; arabicName: string }> = {
+  A: { name: 'Alif', arabicName: 'ألف' },
+  L: { name: 'Lām', arabicName: 'لام' },
+  F: { name: 'Fā’', arabicName: 'فاء' },
+  M: { name: 'Mīm', arabicName: 'ميم' },
+  Y: { name: 'Yā’', arabicName: 'ياء' },
+};
