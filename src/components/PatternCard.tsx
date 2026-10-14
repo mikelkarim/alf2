@@ -1,4 +1,4 @@
-import React, { memo, useRef, useEffect, useState } from 'react';
+import { memo, useRef, useEffect, useState } from 'react';
 import { ZoomIn, ZoomOut } from 'lucide-react';
 import { PatternCardProps } from '../types/types';
 import { letterColors, arabicMappings } from '../constants/mappings';

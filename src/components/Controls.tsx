@@ -1,9 +1,10 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { RefreshCw, Minus, Plus, ZoomIn, ZoomOut } from 'lucide-react';
 import { ControlsProps } from '../types/types';
 
 export const Controls = memo(function Controls({ 
-  iterations, 
+  iterations,
+  maxIterations,
   onIterationChange, 
   onRegenerate,
   scale,
@@ -23,7 +24,7 @@ export const Controls = memo(function Controls({
 
   return (
     <div className="mt-8 text-center space-y-4">
-      <div className="flex items-center justify-center gap-8">
+      <div className="flex flex-wrap items-center justify-center gap-8">
         <div className="flex items-center gap-4">
           <button
             onClick={() => onIterationChange(Math.max(1, iterations - 1))}
@@ -36,8 +37,9 @@ export const Controls = memo(function Controls({
             Itérations: {iterations}
           </span>
           <button
-            onClick={() => onIterationChange(iterations + 1)}
-            className="p-3 bg-amber-500/20 hover:bg-amber-500/30 text-amber-100 rounded-lg border border-amber-500/30 transition-all duration-300 hover:scale-105 active:scale-95"
+            onClick={() => onIterationChange(Math.min(maxIterations, iterations + 1))}
+            disabled={iterations >= maxIterations}
+            className="p-3 bg-amber-500/20 hover:bg-amber-500/30 text-amber-100 rounded-lg border border-amber-500/30 transition-all duration-300 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
             aria-label="Increase iterations"
           >
             <Plus size={20} />

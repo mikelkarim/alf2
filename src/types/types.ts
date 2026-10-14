@@ -11,6 +11,7 @@ export interface PatternCardProps {
 
 export interface ControlsProps {
   iterations: number;
+  maxIterations: number;
   scale: number;
   onIterationChange: (value: number) => void;
   onScaleChange: (value: number) => void;
